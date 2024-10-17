@@ -15,3 +15,24 @@ describe("Books names test suit", () => {
     ]);
   });
 });
+describe("Empty array test suit", () => {
+  it("Empty array should be empty", () => {
+    expect(
+      sorting.sortByName([])
+    ).toEqual([]);
+  });
+});
+
+describe("Equal books names test suit", () => {
+  it("Equal books names should be sorted in the same order", () => {
+    expect(
+      sorting.sortByName([
+        "Властелин Колец",
+        "Властелин Колец",
+      ])
+    ).toEqual([
+      "Властелин Колец",
+      "Властелин Колец",
+    ]);
+  });
+});
