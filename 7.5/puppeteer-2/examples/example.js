@@ -1,5 +1,5 @@
-const { clickElement, putText, getText } = require("./lib/commands.js");
-const { generateName } = require("./lib/util.js");
+const { clickElement, putText, getText } = require("../lib/commands.js");
+const { generateName } = require("../lib/util.js");
 
 let page;
 
