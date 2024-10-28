@@ -46,9 +46,17 @@ test("Some seat order test", async () => {
 test("Reserved seat order test", async () => {
     await clickElement(page,"body > nav > a:nth-child(2)")
     await clickElement(page,"body > main > section:nth-child(1) > div.movie-seances__hall > ul > li > a")
-    const seat= await page.$ ("body > main > section > div.buying-scheme > div.buying-scheme__wrapper > div:nth-child(4) > span:nth-child(5)")
-    expect(seat.disabled).equal(true)
-    const button = await page.$ ("body > main > section > button")
-    expect(button.disabled).equal(true)
-   
+    const seatClass = await page.$eval(
+      "body > main > section > div.buying-scheme > div.buying-scheme__wrapper > div:nth-child(4) > span:nth-child(5)",
+      (el) => el.getAttribute("class")
+    );
+
+    expect(seatClass).contain("buying-scheme__chair_taken");
+
+    const buttonDisabled = await page.$eval(
+      "body > main > section > button",
+      (button) => button.disabled
+    );
+
+    expect(buttonDisabled).equal(true);
 });
